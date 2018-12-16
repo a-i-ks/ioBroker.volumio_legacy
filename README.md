@@ -2,10 +2,10 @@
 # ioBroker.volumio
 =================
 
-This is adapter remote controlling a volumio instance.
+This is an adapter for remote controlling a volumio instance.
 
 ## Changelog
 
-### 0.2.0
+### 0.0.1
 * (a-i-ks) initial release
 
