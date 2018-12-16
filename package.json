@@ -1,0 +1,41 @@
+{
+  "name": "iobroker.volumio",
+  "version": "0.6.0",
+  "description": "volumio",
+  "author": {
+    "name": "André Iske",
+    "email": "andre.iske@mailbox.org"
+  },
+  "contributors": [
+    {
+      "name": "André Iske",
+      "email": "andre.iske@mailbox.org"
+    }
+  ],
+  "homepage": "https://github.com/ioBroker/ioBroker.volumio",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "volumio",
+    "Smart Home",
+    "home automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ioBroker/ioBroker.volumio"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "mocha": "^4.1.0",
+    "chai": "^4.1.2"
+  },
+  "main": "main.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --exit"
+  },
+  "bugs": {
+    "url": "https://github.com/ioBroker/ioBroker.volumio/issues"
+  },
+  "readmeFilename": "README.md"
+}

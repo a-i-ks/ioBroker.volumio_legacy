@@ -1,2 +1,11 @@
+![Logo](admin/volumio.png)
 # ioBroker.volumio
-A ioBroker adapter for controlling Volumio
+=================
+
+This is adapter remote controlling a volumio instance.
+
+## Changelog
+
+### 0.2.0
+* (a-i-ks) initial release
+
