@@ -1,7 +1,7 @@
 {
   "name": "iobroker.volumio",
-  "version": "0.6.0",
-  "description": "volumio",
+  "version": "0.0.1",
+  "description": "Volumio Adapter for ioBroker",
   "author": {
     "name": "André Iske",
     "email": "andre.iske@mailbox.org"
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ioBroker/ioBroker.volumio"
+    "url": "https://github.com/a-i-ks/ioBroker.volumio"
   },
   "dependencies": {},
   "devDependencies": {
@@ -35,7 +35,7 @@
     "test": "node node_modules/mocha/bin/mocha --exit"
   },
   "bugs": {
-    "url": "https://github.com/ioBroker/ioBroker.volumio/issues"
+    "url": "https://github.com/a-i-ks/ioBroker.volumio/issues"
   },
   "readmeFilename": "README.md"
 }
