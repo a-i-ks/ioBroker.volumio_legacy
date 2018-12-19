@@ -33,6 +33,9 @@
 /*jslint node: true */
 'use strict';
 
+const Promise = require('promise');
+const request = Promise.denodeify(require('request'));
+
 // you have to require the utils module and call adapter function
 const utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 
