@@ -189,6 +189,7 @@ function main() {
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
     adapter.log.info('config host: '    + adapter.config.host);
+    adapter.log.info('sending test api request ...')
     sendRequest('/api/v1/getstate', 'GET', '')
 
 
