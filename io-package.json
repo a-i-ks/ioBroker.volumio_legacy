@@ -56,7 +56,7 @@
         "extIcon": "https://raw.githubusercontent.com/a-i-ks/ioBroker.volumio/master/admin/volumio.png",
         "keywords": ["volumio", "audio", "remotecontrol"],
         "readme": "https://github.com/a-i-ks/ioBroker.volumio/blob/master/README.md",
-        "loglevel": "info",
+        "loglevel": "debug",
         "type": "general",
         "license": "GPL-3.0",
         "messagebox": false,
