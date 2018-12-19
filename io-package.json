@@ -4,12 +4,14 @@
         "version": "0.0.1",
         "news": {
             "0.0.1": {
-                "en": "initial adapter",
-                "de": "Initiale Version",
-                "ru": "Первоначальный адаптер",
-                "pt": "Versão inicial",
-                "fr": "Version initiale",
-                "nl": "Eerste release"
+                "en": "First tests and modifications of the template",
+                "de": "Erste Tests und Abänderungen vom Template",
+                "ru": "Первые испытания и модификации шаблона",
+                "pt": "Primeiros testes e modificações do modelo",
+                "fr": "Premiers tests et modifications du modèle",
+                "nl": "Eerste tests en wijzigingen van het sjabloon",
+                "es": "Primeras pruebas y modificaciones de la plantilla",
+                "it": "Prime prove e modifiche del modello"
             }
         },
         "title": "Volumio Remote Control",
@@ -21,7 +23,7 @@
             "nl": "Volumio Remote Control",
             "fr": "Volumio Remote Control",
             "it": "Volumio Remote Control",
-            "es": "Volumio Remote Control "
+            "es": "Volumio Remote Control"
         },
         "desc": {
             "en": "Control a Volumio instance on the local network using the Rest API of Volumio.",
