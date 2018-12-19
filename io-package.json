@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "volumio",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "news": {
             "0.0.1": {
                 "en": "First tests and modifications of the template",
