@@ -46,6 +46,10 @@ it is available then var.The variable is available inside a block and it's child
 You can define the same variable name inside a child without produce a conflict with the variable of the parent block.*/
 let variable = 1234;
 
+let application = {
+
+};
+
 // is called when adapter shuts down - callback has to be called under any circumstances!
 adapter.on('unload', function (callback) {
     try {
@@ -92,11 +96,100 @@ adapter.on('ready', function () {
     main();
 });
 
+function sendRequest(endpoint, method, sendBody) {
+	let options = {
+        url: adapter.config.host + endpoint,
+        method: method,
+        form: sendBody
+    };
+    adapter.log.debug('volumino api call...' + endpoint + '; ' + options.form);
+    let callStack = new Error().stack;
+    return request(options)
+        .then(function(response) {
+        	let body = response.body;
+        	let ret;
+        	let parsedBody;
+            try {
+                parsedBody = JSON.parse(body);
+            } catch (e) {
+                parsedBody = {
+                    error: {
+                        message: "unable to parse response"
+                    }
+                };
+            }
+            switch (response.statusCode) {
+                case 200:
+                    // OK
+                    ret = parsedBody;
+                    break;
+                case 202:
+                    // Accepted, processing has not been completed.
+                    adapter.log.debug('http response: ' + JSON.stringify(response));
+                    ret = Promise.reject(response.statusCode);
+                    break;
+                case 204:
+                    // OK, No Content
+                    ret = null;
+                    break;
+                case 400:
+                    // Bad Request, message body will contain more
+                    // information
+                case 500:
+                    // Server Error
+                case 503:
+                    // Service Unavailable
+                case 404:
+                    // Not Found
+                case 502:
+                    // Bad Gateway
+                    ret = Promise.reject(response.statusCode);
+                    break;
+                case 401:
+                    // Unauthorized
+                    ret = Promise.all([
+                        cache.set('authorization.authorized', false),
+                        cache.set('info.connection', false)
+                    ]).then(function() {
+                            adapter.log.error(parsedBody.error.message);
+                            return Promise.reject(response.statusCode);
+                        });
+                    break;
+                case 429:
+                    // Too Many Requests
+                	let wait = 1;
+                    if (response.headers.hasOwnProperty('retry-after') && response.headers['retry-after'] >
+                        0) {
+                        wait = response.headers['retry-after'];
+                        adapter.log.warn('too many requests, wait ' + wait + 's');
+                    }
+                    ret = new Promise(function(resolve) {
+                        setTimeout(resolve, wait * 1000);
+                    }).then(function() {
+                        return sendRequest(endpoint, method, sendBody);
+                    });
+                    break;
+                default:
+                    adapter.log.warn('http request error not handled, please debug');
+                    adapter.log.warn(callStack);
+                    adapter.log.warn(new Error().stack);
+                    adapter.log.debug('status code: ' + response.statusCode);
+                    adapter.log.debug('body: ' + body);
+                    ret = Promise.reject(response.statusCode);
+            }
+            return ret;
+        }).catch(function(err) {
+            adapter.log.error('erron in request: ' + err);
+            return 0;
+        });
+}
+
 function main() {
 
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
     adapter.log.info('config host: '    + adapter.config.host);
+    sendRequest('/api/v1/getstate', 'GET', '')
 
 
     /**
