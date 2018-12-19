@@ -61,9 +61,7 @@
         "restartAdapters": []
     },
     "native": {
-        "test1": true,
-        "test2": 42,
-        "mySelect": "auto"
+        "host": "volumio.local"
     },
     "objects": [
 
