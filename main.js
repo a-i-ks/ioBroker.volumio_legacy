@@ -50,7 +50,7 @@ You can define the same variable name inside a child without produce a conflict 
 let variable = 1234;
 
 let application = {
-
+    protocol: 'http://',
 };
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
@@ -101,7 +101,7 @@ adapter.on('ready', function () {
 
 function sendRequest(endpoint, method, sendBody) {
 	let options = {
-        url: adapter.config.host + endpoint,
+        url: application.protocol + adapter.config.host + endpoint,
         method: method,
         form: sendBody
     };
