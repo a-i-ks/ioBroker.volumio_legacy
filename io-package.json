@@ -24,14 +24,14 @@
             "es": "Volumio Remote Control "
         },
         "desc": {
-            "en": "ioBroker volumio",
-            "de": "ioBroker Volumio",
-            "ru": "ioBroker Volumio как образец",
-            "pt": "Modelo de adaptador para o ioBroker",
-            "fr": "ioBroker adaptateur modèle",
-            "nl": "ioBroker Volumio",
-            "it": "Adattatore modello ioBroker",
-            "es": "Adaptador de plantilla ioBroker"
+            "en": "Control a Volumio instance on the local network using the Rest API of Volumio.",
+            "de": "Kontrolliere eine Volumio Instanz im lokalen Netzwerk über die Rest API von Volumio.",
+            "ru": "Контролировать экземпляр Volumio в локальной сети с помощью Volumio's Rest API.",
+            "pt": "Controle uma instância do Volumio na rede local usando a API Rest do Volumio.",
+            "fr": "Contrôlez une instance Volumio sur le réseau local à l'aide de l'API Rest de Volumio.",
+            "nl": "Bestuur een Volumio instance op het lokale netwerk met behulp van Volumio's Rest API.",
+            "it": "Controllare un'istanza di Volumio sulla rete locale utilizzando l'API Rest di Volumio.",
+            "es": "Controle una instancia de Volumio en la red local utilizando la Rest API de Volumio."
         },
         "authors": [
             "André Iske <andre.iske@mailbox.org>"
