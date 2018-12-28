@@ -24,7 +24,11 @@
     "type": "git",
     "url": "https://github.com/a-i-ks/ioBroker.volumio"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@iobroker/adapter-core": "1.0.1",
+    "request": "2.83.0",
+    "promise": "8.0.1"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "mocha": "^4.1.0",

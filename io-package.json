@@ -65,7 +65,66 @@
     "native": {
         "host": "volumio.local"
     },
-    "objects": [
-
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "player",
+            "type": "channel",
+            "common": {
+                "name": "Commands to control playback"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.play",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "Play",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/play_black.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.playN",
+            "type": "state",
+            "common": {
+                "role": "playN",
+                "name": "Play n-th track on queue",
+                "type": "number",
+                "read": true,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.pause",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "pause",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/pause_black.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.toggle",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "toggle",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/play_black.png"
+            },
+            "native": {}
+        }
     ]
 }
