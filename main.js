@@ -47,7 +47,6 @@ adapter.on('stateChange', function (id, state) {
     adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
     if (!id) return
     // if (!state || state.ack) return; //TODO Check this
-    // frage klären obj != null => ist dann immer string vergleich möglich?
     // TODO check this
     // you can use the ack flag to detect if it is status (true) or command (false)
     //if (state && !state.ack) {
@@ -55,6 +54,9 @@ adapter.on('stateChange', function (id, state) {
     //} 
     
     switch (id) {
+        case "volumio.0.getPlaybackInfo":
+            refreshPlaybackInfo()
+            break;
         case "volumio.0.player":
         case "volumio.0.player.pause":
         // Todo if played on spotify connect send a message via spotify
@@ -74,6 +76,12 @@ adapter.on('stateChange', function (id, state) {
             break; 
         case "volumio.0.player.stop":
             sendCmdStop();
+            break;
+        case "volumio.0.player.next":
+            sendCmdNext();
+            break;
+        case "volumio.0.player.prev":
+            sendCmdPrev();
             break;
     }
 
@@ -223,4 +231,33 @@ function sendCmdPrev() {
 
 function sendCmdNext() {
     sendRequest('/api/v1/commands/?cmd=next', 'GET', '');
+}
+
+function createPlaybackInfo(data) {
+    if (isEmpty(data)) {
+        adapter.log.debug('no playback content');
+        return Promise.reject('no playback content');
+    }
+    let playStatus = loadOrDefault(data, 'device.id', '');
+}
+
+/**
+ * If obj.name is available return this,
+ * else return defaultVal
+ */
+function loadOrDefault(obj, name, defaultVal) {
+	let t = undefined;
+    try {
+        eval('t = obj.' + name + ';');
+    } catch (e) {}
+    if (t === undefined) {
+        t = defaultVal;
+    }
+    return t;
+}
+
+function refreshPlaybackInfo() {
+   let playbackInfo;
+   playbackInfo = sendRequest('/api/v1/getstate', 'GET', '');
+   adapter.log.info("playback refeshed")
 }

@@ -125,6 +125,52 @@
                 "icon": "icons/play_black.png"
             },
             "native": {}
+        },
+        {
+            "_id": "player.next",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "next",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/skip_next_black.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.prev",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "next",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/skip_next_black.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "playbackInfo",
+            "type": "channel",
+            "common": {
+                "name": "Read only information of playback"
+            },
+            "native": {}
+        },
+        {
+            "_id": "getPlaybackInfo",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "refresh playback info",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
         }
     ]
 }
