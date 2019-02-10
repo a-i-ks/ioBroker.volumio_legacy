@@ -58,7 +58,7 @@
         "readme": "https://github.com/a-i-ks/ioBroker.volumio/blob/master/README.md",
         "loglevel": "debug",
         "type": "general",
-        "license": "GPL-3.0",
+        "license": "Apache-2.0",
         "messagebox": false,
         "restartAdapters": []
     },
