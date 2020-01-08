@@ -16,7 +16,7 @@ const adapter = new utils.Adapter('volumio');
 /*Variable declaration, since ES6 there are let to declare variables. Let has a more clearer definition where 
 it is available then var.The variable is available inside a block and it's childs, but not outside. 
 You can define the same variable name inside a child without produce a conflict with the variable of the parent block.*/
-let variable = 1234;
+// let variable = 1234;
 
 let application = {
     protocol: 'http://',
@@ -45,7 +45,7 @@ adapter.on('objectChange', function (id, obj) {
 adapter.on('stateChange', function (id, state) {
     // Warning, state can be null if it was deleted
     adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
-    if (!id) return
+    if (!id) return;
     // if (!state || state.ack) return; //TODO Check this
     // TODO check this
     // you can use the ack flag to detect if it is status (true) or command (false)
@@ -55,7 +55,7 @@ adapter.on('stateChange', function (id, state) {
     
     switch (id) {
         case "volumio.0.getPlaybackInfo":
-            refreshPlaybackInfo()
+            refreshPlaybackInfo();
             break;
         case "volumio.0.player":
         case "volumio.0.player.pause":
@@ -67,7 +67,7 @@ adapter.on('stateChange', function (id, state) {
             sendCmdToggle();
             break;
         case "volumio.0.player.play": 
-            sendCmdPlay()
+            sendCmdPlay();
             break;
         case "volumio.0.player.playN":
             if (state && state.val) {
@@ -82,6 +82,23 @@ adapter.on('stateChange', function (id, state) {
             break;
         case "volumio.0.player.prev":
             sendCmdPrev();
+            break;
+        case "volumio.0.player.mute":
+            sendCmdMute();
+            break;
+        case "volumio.0.player.unmute":
+            sendCmdUnmute();
+            break;
+        case "volumio.0.player.volumeUp":
+            sendCmdVolumeUp();
+            break;
+        case "volumio.0.player.volumeDown":
+            sendCmdVolumeDown();
+            break;
+        case "volumio.0.player.volume":
+            if (state && state.val) {
+                sendCmdVolume(state.val)
+            }
             break;
     }
 
@@ -231,6 +248,28 @@ function sendCmdPrev() {
 
 function sendCmdNext() {
     sendRequest('/api/v1/commands/?cmd=next', 'GET', '');
+}
+
+function sendCmdMute() {
+    sendRequest('/api/v1/commands/?cmd=volume&volume=mute', 'GET', '');
+}
+
+function sendCmdUnmute() {
+    sendRequest('/api/v1/commands/?cmd=volume&volume=unmute', 'GET', '');
+}
+
+function sendCmdVolumeUp() {
+    sendRequest('/api/v1/commands/?cmd=volume&volume=plus', 'GET', '');
+}
+
+function sendCmdVolumeDown() {
+    sendRequest('/api/v1/commands/?cmd=volume&volume=minus', 'GET', '');
+}
+
+function sendCmdVolume(value) {
+    if(value && Number.isInteger(value) ) {
+        sendRequest('/api/v1/commands/?cmd=volume&volume='+value, 'GET', '');
+    }
 }
 
 function createPlaybackInfo(data) {

@@ -12,6 +12,16 @@
                 "nl": "Eerste tests en wijzigingen van het sjabloon",
                 "es": "Primeras pruebas y modificaciones de la plantilla",
                 "it": "Prime prove e modifiche del modello"
+            },
+            "0.0.2": {
+                "en": "Further development, bug fixing. Added a state for volume control.",
+                "de": "Weiterentwicklung, Fehlerbehebung. Zustand für Lautstärkereglung eingebaut.",
+                "ru": "Дальнейшее развитие, исправление ошибок. Состояние для встроенного регулятора громкости.",
+                "pt": "Dalszy rozwój, naprawa błędów. Warunek wbudowanej regulacji głośności.",
+                "fr": "Développement ultérieur, correction de bogues. Condition pour le contrôle du volume intégré.",
+                "nl": "Verdere ontwikkeling, bugfixing. Voorwaarde voor ingebouwde volumeregeling.",
+                "es": "Desarrollo adicional, corrección de errores. Condición para el control de volumen incorporado.",
+                "it": "Ulteriore sviluppo, correzione di bug. Condizione per il controllo del volume incorporato."
             }
         },
         "title": "Volumio Remote Control",
@@ -56,7 +66,7 @@
         "extIcon": "https://raw.githubusercontent.com/a-i-ks/ioBroker.volumio/master/admin/volumio.png",
         "keywords": ["volumio", "audio", "remotecontrol"],
         "readme": "https://github.com/a-i-ks/ioBroker.volumio/blob/master/README.md",
-        "loglevel": "debug",
+        "loglevel": "info",
         "type": "general",
         "license": "Apache-2.0",
         "messagebox": false,
@@ -149,6 +159,71 @@
                 "read": false,
                 "write": true,
                 "icon": "icons/skip_next_black.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.mute",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "mute",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/mute_black.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.unmute",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "unmute",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/active_song_speaker_black.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.volumeUp",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "volume up",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/volume_up.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.volumeDown",
+            "type": "state",
+            "common": {
+                "role": "button",
+                "name": "volume down",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "icon": "icons/volume_down.png"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.volume",
+            "type": "state",
+            "common": {
+                "role": "value",
+                "name": "volume in percentage",
+                "type": "number",
+                "read": true,
+                "write": true,
+                "icon": "icons/active_song_speaker_black.png"
             },
             "native": {}
         },
