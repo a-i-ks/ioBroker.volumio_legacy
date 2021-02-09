@@ -1,3 +1,8 @@
+# Legacy notice 
+**This respository is no longer active. A new, rewritten version of the adapter can be found here:**
+
+https://github.com/a-i-ks/ioBroker.volumio
+
 ![Logo](admin/volumio.png)
 # ioBroker.volumio
 =================
